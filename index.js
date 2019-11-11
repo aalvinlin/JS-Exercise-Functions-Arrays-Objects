@@ -273,14 +273,13 @@ function getOlderCars(inventory, maxYear) {
 */
 function getGermanCars(inventory) {
   
-  var manufacturersDesired = ['Audi', 'Mercedes-Benz', 'Volkswagen', 'BMW'];
   var germanCars = [];
 
   for (var i = 0; i < inventory.length; i++)
   {
     var car = inventory[i];
 
-    if (manufacturersDesired.includes(car.car_make))
+    if (car.car_make === 'Audi' || car.car_make === 'Mercedes-Benz' || car.car_make === 'Volkswagen' || car.car_make === 'BMW')
     {
       germanCars.push(car);
     }
