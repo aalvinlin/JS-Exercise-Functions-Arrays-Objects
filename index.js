@@ -79,9 +79,9 @@ function getName(person) {
 */
 function makeSmartPerson(user_name) {
   return {
-    name: user_name;
+    name: user_name,
     sum: function(n1, n2)
-          { return n1 + n2; }
+          { return n1 + n2; },
     speak: function ()
           { return "Hello, my name is " + user_name; }
   }
@@ -183,7 +183,7 @@ function getCarInfoById(inventory, car_id) {
   
   for (var i = 0; i < inventory.length; i++)
   {
-    var car = invnetory[i];
+    var car = inventory[i];
 
     if (car.id === car_id)
     {
@@ -203,11 +203,15 @@ function getCarInfoById(inventory, car_id) {
 */
 function sortCarInventory(inventory) {
   inventory.sort(function (car1, car2) {
-    if (car1 < car2)
+    if (car1.car_model < car2.car_model)
     { return -1; }
-      else
+    else if (car1.car_model > car2.car_model)
     { return 1; }
-  })
+    else
+    { return 0;}
+  });
+
+  return inventory;
 }
 
 /**
@@ -227,11 +231,10 @@ function getModelYears(inventory) {
   {
     var car = inventory[i];
 
-    if (!year_array.includes(car.car_year))
-    {
-      year_array.push(car.car_year);
-    }
+    year_array.push(car.car_year);
   }
+
+  return year_array;
 }
 
 /**
@@ -253,11 +256,13 @@ function getOlderCars(inventory, maxYear) {
   {
     var car = inventory[i];
 
-    if (car.car_year >= maxYear)
+    if (car.car_year <= maxYear)
     {
       olderCars.push(car);
     }
   }
+
+  return olderCars;
 }
 
 /**
@@ -284,6 +289,8 @@ function getGermanCars(inventory) {
       germanCars.push(car);
     }
   }
+
+  return germanCars;
 }
 
 /**
